@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DIPAD | Peace Resources Hub</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#efeee5",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#ffc38f",
+              "tertiary": "#303c34",
+              "primary-fixed-dim": "#a1d493",
+              "on-tertiary-fixed": "#131e17",
+              "surface": "#fafaf0",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f2f1e8",
+              "tertiary-container": "#47534a",
+              "error": "#ba1a1a",
+              "surface-dim": "#dbdad1",
+              "primary-container": "#2e5a27",
+              "surface-tint": "#3c6934",
+              "secondary-fixed-dim": "#f6bb87",
+              "surface-container-high": "#e9e9df",
+              "surface-container-low": "#f5f4eb",
+              "primary": "#164212",
+              "on-surface": "#1b1c17",
+              "on-background": "#1b1c17",
+              "on-secondary-fixed-variant": "#663d15",
+              "surface-variant": "#e3e3da",
+              "surface-bright": "#fafaf0",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#3e4a41",
+              "on-primary-container": "#9ed090",
+              "primary-fixed": "#bdf0ad",
+              "inverse-surface": "#30312b",
+              "inverse-primary": "#a1d493",
+              "outline": "#72796d",
+              "tertiary-fixed": "#d9e6da",
+              "on-surface-variant": "#42493e",
+              "on-secondary-fixed": "#2e1500",
+              "background": "#fafaf0",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#24501e",
+              "secondary-fixed": "#ffdcc1",
+              "secondary": "#81542a",
+              "outline-variant": "#c2c9bb",
+              "on-primary-fixed": "#002201",
+              "on-secondary-container": "#7a4e24",
+              "surface-container-highest": "#e3e3da",
+              "on-tertiary-container": "#b9c6bb",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#bdcabe",
+              "on-primary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+    </style>
+    <style>
+
+        /* Dark Mode Overrides for Specific Sections if needed */
+        .dark body {
+            background-color: #1b1c17;
+            color: #efeee5;
+        }
+        .dark header {
+            background-color: rgba(27, 28, 23, 0.8);
+        }
+        .dark .bg-surface { background-color: #1b1c17; }
+        .dark .bg-surface-container { background-color: #30312b; }
+        .dark .bg-surface-container-low { background-color: #2a2b24; }
+        .dark .bg-surface-container-highest { background-color: #42493e; }
+        .dark .bg-surface-dim { background-color: #131411; }
+        .dark .text-primary { color: #a1d493; }
+        .dark .text-secondary { color: #f6bb87; }
+        .dark .text-on-surface-variant { color: #c2c9bb; }
+        .dark .text-on-surface { color: #e3e3da; }
+        .dark .border-outline-variant\/20 { border-color: rgba(194, 201, 187, 0.2); }
+    </style>
+  
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme immediately
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+  </head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fafaf0]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-headline font-extrabold tracking-tight text-2xl text-primary">DIPAD</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border-2 border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a smiling African woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDZs0fpo72bpe8U-DYv4zeBldvcM5AxJSCZxs_IR4URECTWXr0MveOg5a4JyCKMLMFG1HJ0iOeqWnNGRHbZYiXlQUUk2LJuhozEuWxRAMgYFFt5ug4xP9d845eGio9FdWa6kRnE3-rTa8Mgoru7WXS6J8cmKkGIEcm8xpoz4GOV9Qjej__2qPX6TBgorS4YxbBd40Dk7HEy50VDY4xcqWb5llMbp9C_1if84bJtkAYTi3X1zEOwS7m9ap02MPD9SvnyD7HOUiGwqit"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-7xl mx-auto">
+    <!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fafaf0]/80 dark:bg-[#1b1c17]/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center px-8 md:px-24 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#164212] dark:text-[#c2c9bb]" data-icon="park">park</span>
+<span class="text-[#164212] dark:text-[#fafaf0] font-extrabold tracking-tighter text-2xl font-headline">DIPAD</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="index.html">Home</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="program.html">Programs</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="gallery.html">Gallery</a>
+<a class="text-[#164212] dark:text-[#fafaf0] border-b-2 border-[#164212] pb-1 font-headline tracking-tight font-bold text-lg transition-colors duration-300" href="resources.html">Resources</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="About.html">About Us</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="Involed.html">Get Involved</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="contact.html">contact</a>
+<div class="flex items-center gap-4">
+<button aria-label="Toggle dark mode" class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-highest transition-colors duration-300 text-primary focus:outline-none" onclick="toggleTheme()">
+<span class="material-symbols-outlined block dark:hidden" data-icon="dark_mode">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block" data-icon="wb_sunny">wb_sunny</span>
+</button>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="mb-10">
+<div class="relative rounded-xl overflow-hidden mb-8 min-h-[180px] flex flex-col justify-end p-6 bg-gradient-to-br from-primary to-primary-container">
+<div class="absolute inset-0 opacity-20 mix-blend-overlay">
+<img alt="Peaceful landscape" class="w-full h-full object-cover" data-alt="Sunlight filtering through acacia trees in a savanna" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlWVtc9aWgYS3nnRZkjcbCvGFHmpRB9VMIuLzseFVAKtHKL9tEEszHP1tyRRNAuCl2nsEKvOfv07vHL0A5xuhPrLZiDJ9rfdBHtYFsSMQLBtDV7_3WBPAlpP1IiBrL-Zcjg9iWu8CP3vv7Rh8LXqcdRu8EastS2k5VJ-EhunmWEqUgX9415ntjfwdkc_spbHPlQrwXXkf-zOE6YXVahQr7kbEgm046cADtGPsxlNalBO6zOXO9nfgienS1cmOdvZkgr05_RYruXNgy"/>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline font-extrabold text-3xl text-on-primary mb-2 leading-tight">Peace Resources</h2>
+<p class="text-on-primary/80 text-sm max-w-md">Empowering community leaders with knowledge for sustainable justice and social development.</p>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="relative -mt-12 mx-2">
+<div class="flex items-center bg-surface-container-high rounded-xl p-3 shadow-lg ring-1 ring-black/5">
+<span class="material-symbols-outlined text-on-surface-variant px-2" data-icon="search">search</span>
+<input id="searchInput" type="text" placeholder="Search for reports, links, or studies..."
+class="bg-transparent border-none focus:ring-0 text-on-surface w-full placeholder:text-on-surface-variant/60 font-medium"/>
+</div>
+</div>
+</section>
+<!-- Filter Tabs -->
+<section class="mb-8 overflow-x-auto no-scrollbar">
+<div class="flex gap-2 pb-2">
+<button class="filter-btn px-5 py-2.5 rounded-full bg-primary text-on-primary text-sm font-semibold whitespace-nowrap shadow-md" data-filter="all" >All</button>
+<button class="filter-btn px-5 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors" data-filter="Documents">Documents</button>
+<button class="filter-btn px-5 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors" data-filter="research links">Research Links</button>
+<button class="filter-btn px-5 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors" data-filter="case studies">Case Studies</button>
+</div>
+</section>
+<!-- Resource Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Resource Card 1 -->
+ <div class="resource-card ..." data-type="Documents" data-title="Community Mediation Guidelines 2024">
+<div class="group bg-surface-container-low rounded-xl p-5 flex flex-col justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center mb-4 text-on-primary-fixed">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-2 leading-tight">Community Mediation Guidelines 2024</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-6">A comprehensive framework for grassroots conflict resolution and peace-building initiatives in rural Kenya.</p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-2 py-1 bg-secondary-fixed rounded-sm">PDF • 2.4 MB</span>
+ <a href="project folder/documents/Community Mediation Guidelines 2024.pdf" target="_blank"
+   class="flex items-center gap-1 text-primary font-bold text-sm hover:underline">
+    View 
+    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+
+
+</div>
+</div>
+</div>
+<!-- Resource Card 2 -->
+ <div class="resource-card ..." data-type="research links" data-title="National Justice Reform Tracker">
+<div class="group bg-surface-container-low rounded-xl p-5 flex flex-col justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div>
+<div class="w-12 h-12 rounded-lg bg-secondary-fixed flex items-center justify-center mb-4 text-on-secondary-fixed">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-2 leading-tight">National Justice Reform Tracker</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Real-time data and dashboard tracking legislative changes in social justice and constitutional rights.</p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-2 py-1 bg-secondary-fixed rounded-sm">External Link</span>
+<a href="https://google.com" target="_blank"
+   class="flex items-center gap-1 text-primary font-bold text-sm hover:underline">
+    Visit 
+    <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Resource Card 3 -->
+ <div class="resource-card ..." data-type="Documents" data-title="Peace & Development Journal Vol. 12">
+<div class="group bg-surface-container-low rounded-xl p-5 flex flex-col justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div>
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center mb-4 text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-2 leading-tight">Peace &amp; Development Journal Vol. 12</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Peer-reviewed research articles focusing on the intersection of peace-building and economic growth.</p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-2 py-1 bg-secondary-fixed rounded-sm">Document</span>
+<a href="project folder/documents/mobile-roadmap-v2.pdf" target="_blank"
+   class="flex items-center gap-1 text-primary font-bold text-sm hover:underline">
+    View 
+    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Resource Card 4 -->
+ <div class="resource-card ..." data-type="case studies" data-title="Youth Engagement Case Study: Kibera">
+<div class="group bg-surface-container-low rounded-xl p-5 flex flex-col justify-between hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center mb-4 text-on-primary-fixed">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-2 leading-tight">Youth Engagement Case Study: Kibera</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-6">Success stories of youth-led dialogue circles that reduced local tensions during election seasons.</p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-2 py-1 bg-secondary-fixed rounded-sm">PDF • 1.8 MB</span>
+<a href="project folder/documents/Scala_28Day_Roadmap.pdf" target="_blank"
+   class="flex items-center gap-1 text-primary font-bold text-sm hover:underline">
+    View 
+    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Component: "The Impact Story" as a suggested read -->
+<section class="mt-16 mb-12 relative">
+<div class="absolute -left-6 top-10 w-24 h-48 bg-surface-container-highest rounded-r-3xl -z-10"></div>
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/2 aspect-square rounded-xl overflow-hidden shadow-2xl">
+<img alt="Impact image" class="w-full h-full object-cover" data-alt="Volunteer working with community members outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRT2J2TCVvYnyYeNOJhkG7EO31VX9Cjh2R6ZTOWxCFANQ0d0ufaCFBaPhM-kMYAkZ_G-HGi1XeciU92ybVVab61CyQta9RaiyAR-9OHdW4_RiQJV7o1IOzDwpprlu0Bt5lT0jar0Fg4CJjPyQm5-TKsZmtooH9XfmaieYAt5V35x1J4i2OU_n4XQpDHtZEhW3faH0ja1OWfckrfGNpdW4_rgW0-qjgXt7qHoIR87yNzWWOs6b3lAwGTM5O2zua3r1s1Oq3bgRd0Rgr"/>
+</div>
+<div class="w-full md:w-1/2 space-y-4">
+<span class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Featured Insight</span>
+<h3 class="font-headline font-extrabold text-3xl leading-tight">Digital Dividends for Peace: A 2024 Report</h3>
+<p class="text-on-surface-variant leading-relaxed">How mobile technology is bridging the gap between isolated communities and central justice systems. Read the flagship annual research summary.</p>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-primary/20 transition-all flex items-center gap-2">
+                        Download Report <span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB: Add Resource -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-xl shadow-2xl flex items-center justify-center group active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-2 bg-[#fafaf0] shadow-[0_-8px_24px_rgba(27,28,23,0.06)] rounded-t-2xl z-50">
+<a class="flex flex-col items-center justify-center text-[#1b1c17]/50" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[11px] font-inter font-medium uppercase tracking-wider mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1c17]/50" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="text-[11px] font-inter font-medium uppercase tracking-wider mt-1">Programs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1c17]/50" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="text-[11px] font-inter font-medium uppercase tracking-wider mt-1">About</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1c17]/50" href="#">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="text-[11px] font-inter font-medium uppercase tracking-wider mt-1">Action</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#164212] text-white rounded-xl px-3 py-1.5" href="#">
+<span class="material-symbols-outlined" data-icon="library_books" style="font-variation-settings: 'FILL' 1;">library_books</span>
+<span class="text-[11px] font-inter font-medium uppercase tracking-wider mt-0.5">Resources</span>
+</a>
+</nav>
+<!-- Footer for large screens -->
+<footer class="w-full mt-20 bg-[#1b1c17] text-[#efeee5]">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 gap-6 max-w-7xl mx-auto">
+<div class="text-center md:text-left">
+<h4 class="font-headline font-bold text-xl text-[#fafaf0] mb-2">DIPAD Kenya</h4>
+<p class="font-inter text-sm leading-relaxed text-[#efeee5]/70">© 2024 DIPAD Kenya. Peace, Justice, and Community Development.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-[#efeee5]/70 hover:text-white transition-opacity text-sm font-medium" href="#">Privacy Policy</a>
+<a class="text-[#efeee5]/70 hover:text-white transition-opacity text-sm font-medium" href="#">Terms</a>
+<a class="text-[#efeee5]/70 hover:text-white transition-opacity text-sm font-medium" href="contact.html">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+/* SEARCH FUNCTION */
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".resource-card");
+
+searchInput.addEventListener("keyup", function () {
+    const value = this.value.toLowerCase();
+
+    cards.forEach(card => {
+        const title = card.dataset.title.toLowerCase();
+
+        if (title.includes(value)) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+
+
+/* FILTER FUNCTION */
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+            if (filter === "all" || card.dataset.type === filter) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        // active style
+        filterButtons.forEach(b => b.classList.remove("bg-primary","text-white"));
+        btn.classList.add("bg-primary","text-white");
+    });
+});
+
+</script>
+<script>
+function addResource(title, description, type, link) {
+    const container = document.querySelector("section.grid");
+
+    const card = document.createElement("div");
+    card.className = "resource-card";
+    card.dataset.type = type;
+    card.dataset.title = title;
+
+    card.innerHTML = `
+        <div class="group bg-surface-container-low rounded-xl p-5 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+            <div>
+                <h3 class="font-headline font-bold text-lg mb-2">${title}</h3>
+                <p class="text-sm mb-6">${description}</p>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-xs">${type}</span>
+                <button class="action-btn text-primary font-bold text-sm"
+                        data-link="${link}">
+                    Open
+                </button>
+            </div>
+        </div>
+    `;
+
+    container.appendChild(card);
+}
+</script>
+</body></html>

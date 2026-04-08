@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                       "on-primary": "#ffffff",
+              "surface-container-highest": "#e3e3da",
+              "on-secondary-fixed-variant": "#663d15",
+              "on-surface-variant": "#42493e",
+              "outline": "#72796d",
+              "on-tertiary-container": "#b9c6bb",
+              "surface-variant": "#e3e3da",
+              "tertiary-fixed": "#d9e6da",
+              "on-primary-fixed": "#002201",
+              "on-background": "#1b1c17",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#f6bb87",
+              "on-tertiary-fixed-variant": "#3e4a41",
+              "primary-fixed-dim": "#a1d493",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#a1d493",
+              "primary-container": "#2e5a27",
+              "secondary": "#164212",
+              "outline-variant": "#c2c9bb",
+              "on-secondary-fixed": "#2e1500",
+              "on-tertiary-fixed": "#131e17",
+              "on-primary-fixed-variant": "#24501e",
+              "tertiary-container": "#47534a",
+              "primary": "#164212",
+              "tertiary-fixed-dim": "#bdcabe",
+              "inverse-surface": "#30312b",
+              "surface-tint": "#3c6934",
+              "secondary-fixed": "#ffdcc1",
+              "on-primary-container": "#9ed090",
+              "surface-container-lowest": "#ffffff",
+              "error": "#ba1a1a",
+              "tertiary": "#303c34",
+              "inverse-on-surface": "#f2f1e8",
+              "surface": "#fafaf0",
+              "surface-container-high": "#e9e9df",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dbdad1",
+              "on-secondary-container": "#7a4e24",
+              "surface-container": "#efeee5",
+              "on-surface": "#1b1c17",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#fafaf0",
+              "secondary-container": "#9ed090",
+              "surface-container-low": "#9ed090",
+              "primary-fixed": "#bdf0ad",
+              "background": "#fafaf0"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+.cookie-banner {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background-color: #1b1c17;
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column; /* default for mobile */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  z-index: 50;
+  transition: bottom 0.5s ease-in-out;
+}
+
+/* ✅ Correct responsive behavior */
+@media (min-width: 768px) {
+  .cookie-banner {
+    flex-direction: row;
+  }
+}
+
+.cookie-banner.show {
+  bottom: 0;
+}
+        /* Dark Mode Overrides for Specific Sections if needed */
+        .dark body {
+            background-color: #1b1c17;
+            color: #efeee5;
+        }
+        .dark header {
+            background-color: rgba(27, 28, 23, 0.8);
+        }
+        .dark .bg-surface { background-color: #1b1c17; }
+        .dark .bg-surface-container { background-color: #30312b; }
+        .dark .bg-surface-container-low { background-color: #2a2b24; }
+        .dark .bg-surface-container-highest { background-color: #42493e; }
+        .dark .bg-surface-dim { background-color: #131411; }
+        .dark .text-primary { color: #a1d493; }
+        .dark .text-secondary { color: #f6bb87; }
+        .dark .text-on-surface-variant { color: #c2c9bb; }
+        .dark .text-on-surface { color: #e3e3da; }
+        .dark .border-outline-variant\/20 { border-color: rgba(194, 201, 187, 0.2); }
+    </style>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme immediately
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-surface selection:bg-secondary-container selection:text-on-secondary-container">
+
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fafaf0]/80 dark:bg-[#1b1c17]/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center px-8 md:px-24 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-2">
+<img src="Pics/download.jpg" alt="Company Logo" width="200" height="100">
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#164212] dark:text-[#fafaf0] border-b-2 border-[#164212] pb-1 font-headline tracking-tight font-bold text-lg transition-colors duration-300" href="index.html">Home</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="program.html">Programs</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="gallery.html">Gallery</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="resources.html">Resources</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="About.html">About Us</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="Involed.html">Get Involved</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="contact.html">contact</a>
+<div class="flex items-center gap-4">
+<button aria-label="Toggle dark mode" class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-highest transition-colors duration-300 text-primary focus:outline-none" onclick="toggleTheme()">
+<span class="material-symbols-outlined block dark:hidden" data-icon="dark_mode">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block" data-icon="wb_sunny">wb_sunny</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="px-8 md:px-24 py-16 md:py-24 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-7">
+<span class="inline-block bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6 font-label">COMMUNITY FIRST</span>
+<h1 class="text-display-lg font-headline font-extrabold text-5xl md:text-7xl leading-tight tracking-tighter text-on-surface mb-8">
+                    Daima Initiatives for <span class="text-primary italic underline decoration-secondary-fixed-dim underline-offset-8">Peace</span> and Development.
+                </h1>
+<p class="text-xl text-on-surface-variant leading-relaxed max-w-xl mb-10">
+                    Daima Initiatives for Peace and Development (DIPAD) works at the grassroots to transform conflicts and empower communities through inclusive justice and visionary leadership.
+                </p>
+<p class="text-xl text-on-surface-variant leading-relaxed max-w-xl mb-10">
+ Vision
+Our Vision is to create “An Informed and Resilient Society”
+ Mission Statement:
+Our Mission is to Empower Communities through Training,Research and Leadership Development using Appreciative Inquiry (AI) in attainment of Peace and Social Justice.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-lg shadow-lg hover:opacity-90 transition-opacity">
+                        Explore Our Programs
+                    </button>
+<button class="bg-surface-container-highest text-secondary px-8 py-4 rounded-xl font-headline font-bold text-lg hover:bg-surface-container-high transition-colors">
+                        Read Impact Reports
+                    </button>
+</div>
+</div>
+<div class="md:col-span-5 relative">
+<div class="relative z-10 rounded-[2.5rem] overflow-hidden aspect-[4/5] editorial-shadow">
+<img alt="Kenyan community elders meeting" class="w-full h-full object-cover" data-alt="Group of Kenyan community elders gathered in discussion" src="Pics/home.jpg"/>
+</div>
+<!-- Asymmetric background elements -->
+<div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary-fixed rounded-3xl -z-0"></div>
+<div class="absolute -top-6 -right-6 w-48 h-48 bg-surface-container-highest rounded-full -z-0"></div>
+</div>
+</section>
+<!-- Impact Stats -->
+<section class="bg-surface-container py-20 px-8 md:px-24">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+<div class="space-y-2">
+<p class="text-5xl font-headline font-black text-primary">150+</p>
+<p class="text-sm font-label text-on-surface-variant font-medium tracking-wide">COMMUNITIES REACHED</p>
+</div>
+<div class="space-y-2">
+<p class="text-5xl font-headline font-black text-secondary">12k</p>
+<p class="text-sm font-label text-on-surface-variant font-medium tracking-wide">PEACE AMBASSADORS</p>
+</div>
+<div class="space-y-2">
+<p class="text-5xl font-headline font-black text-primary">85%</p>
+<p class="text-sm font-label text-on-surface-variant font-medium tracking-wide">CONFLICT RESOLUTION RATE</p>
+</div>
+<div class="space-y-2">
+<p class="text-5xl font-headline font-black text-secondary">25</p>
+<p class="text-sm font-label text-on-surface-variant font-medium tracking-wide">YEARS OF SERVICE</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Focus Areas (Bento Grid) -->
+<section class="py-24 px-8 md:px-24 max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-2xl">
+<p class="text-secondary font-bold tracking-widest mb-4 font-label">WHAT WE DO</p>
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface">Our Strategic Pillars of Change</h2>
+</div>
+<p class="text-on-surface-variant max-w-sm mb-2">
+                    We approach community development with a holistic framework designed for lasting resilience.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Peacebuilding -->
+<div class="bg-surface-container-low p-8 rounded-[2rem] editorial-shadow group hover:bg-primary transition-colors duration-500 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-primary-fixed flex items-center justify-center mb-8 group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-on-primary">Capacity Building Programs</h3>
+<p class="text-on-surface-variant group-hover:text-primary-fixed leading-relaxed">
+                            Mitigating inter-communal conflict through dialogue, early warning systems, and traditional mediation practices.
+                        </p>
+</div>
+<a class="flex items-center gap-2 font-bold text-primary group-hover:text-on-primary mt-8" href="#">
+                        Learn more <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Social Justice -->
+<div class="bg-surface-container-high p-8 rounded-[2rem] editorial-shadow group hover:bg-secondary transition-colors duration-500 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-secondary-fixed flex items-center justify-center mb-8 group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-on-secondary-container" data-icon="gavel">gavel</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-on-secondary">Cultural Peace Resource Center</h3>
+<p class="text-on-surface-variant group-hover:text-secondary-fixed leading-relaxed">
+                            The program applies Appreciative Inquiry(AI)approaches to investigate and validate cultural and community Initiatives.
+                        </p>
+</div>
+<a class="flex items-center gap-2 font-bold text-secondary group-hover:text-on-secondary mt-8" href="#">
+                        Learn more <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Leadership -->
+<div class="bg-surface-container p-8 rounded-[2rem] editorial-shadow group hover:bg-tertiary transition-colors duration-500 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-tertiary-fixed flex items-center justify-center mb-8 group-hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined text-tertiary group-hover:text-on-tertiary-container" data-icon="diversity_3">diversity_3</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-on-tertiary">Women&Youth Leadership Development</h3>
+<p class="text-on-surface-variant group-hover:text-tertiary-fixed leading-relaxed">
+                            The project empowers Women and Youth with skills on leadership and non-violence so that they can be agents of change in their communities.
+                        </p>
+</div>
+<a class="flex items-center gap-2 font-bold text-tertiary group-hover:text-on-tertiary mt-8" href="#">
+                        Learn more <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- research -->
+<div class="bg-surface-container-high p-8 rounded-[2rem] editorial-shadow group hover:bg-secondary transition-colors duration-500 flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-secondary-fixed flex items-center justify-center mb-8 group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-on-secondary-container" data-icon="gavel">gavel</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4 group-hover:text-on-secondary">Action Research and Documentation</h3>
+<p class="text-on-surface-variant group-hover:text-secondary-fixed leading-relaxed">
+                            Through collaborative and action research, the program aims at developing and testing new approaches to community driven processes and practices.
+                        </p>
+</div>
+<a class="flex items-center gap-2 font-bold text-secondary group-hover:text-on-secondary mt-8" href="#">
+                        Learn more <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Impact Story Signature Component -->
+<section class="py-24 px-8 md:px-24 max-w-[1440px] mx-auto overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-full h-full bg-surface-container-highest rounded-[3rem] -z-10 rotate-3"></div>
+<div class="relative rounded-3xl overflow-hidden editorial-shadow h-[500px]">
+<img alt="Young Kenyan students in a circle" class="w-full h-full object-cover" data-alt="Young Kenyan students sitting together in a focused learning circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjDSEr9fNeAt-9dSzQR44RPZDhkJNuau7LRxwyacU_tUgBRbSf_durelgJ4_4Iyc6MLjgsgCmbQNrQotmF16jWUWihCumuZJh2d8dUJxsnuJTfOuMF3ruHeXi6THtIAkFB5j7D1wHfgvZpWolXBfZ5xTYBt2FeuNPocq9n0Plh480_KbjGjRqYUo42yk_97AiWlSRHRBTFCi4QMNtr6ejGyIb-r-ZqW_ZSw3-5mNhqPTPt5npQ0qeBtJoRw6oiqi0aJTlT87uV_yUN"/>
+</div>
+<div class="absolute -bottom-8 -right-8 p-8 bg-surface border border-outline-variant/20 rounded-2xl editorial-shadow max-w-[240px]">
+<p class="text-sm font-body italic text-on-surface-variant">"DIPAD didn't just bring peace; they brought us the tools to build our own future."</p>
+<p class="text-xs font-bold mt-4 text-primary">— Community Leader</p>
+</div>
+</div>
+<div>
+<h2 class="text-4xl font-headline font-bold mb-6 text-on-surface">Roots of Resilience</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                        Our impact is measured not just in signatures on peace treaties, but in the children who can walk to school without fear and the women who lead community assemblies. We focus on the "Daima" philosophy—perpetual growth.
+                    </p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h4 class="font-headline font-bold">Inclusive Representation</h4>
+<p class="text-sm text-on-surface-variant">Integrating youth and women into traditional decision-making structures.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h4 class="font-headline font-bold">Economic Justice</h4>
+<p class="text-sm text-on-surface-variant">Peace is fragile without bread; we link reconciliation with livelihood support.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Donate Section -->
+<section class="my-24 px-8 md:px-24 max-w-[1440px] mx-auto">
+<div class="bg-primary rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-50"></div>
+<!-- Abstract patterns -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full -ml-48 -mb-48"></div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="text-4xl md:text-6xl font-headline font-black text-on-primary mb-8 tracking-tighter">Invest in a Peaceful Tomorrow</h2>
+<p class="text-xl text-primary-fixed mb-12 opacity-90 font-light">
+                        Your contribution fuels community-led transformation. Every shilling goes directly to grassroots peace initiatives across Kenya.
+                    </p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-secondary text-on-secondary px-10 py-5 rounded-full font-headline font-bold text-xl shadow-2xl hover:bg-on-secondary-container transition-all">
+                            Donate Now
+                        </button>
+<button class="border-2 border-primary-fixed text-primary-fixed px-10 py-5 rounded-full font-headline font-bold text-xl hover:bg-primary-fixed hover:text-primary transition-all">
+                            Partner With Us
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#efeee5] dark:bg-[#1b1c17] w-full pt-16 pb-8">
+<div class="flex flex-col md:flex-row justify-between items-start px-8 md:px-24 gap-12 max-w-[1440px] mx-auto">
+<div class="max-w-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-[#164212]" data-icon="park">park</span>
+<span class="text-[#164212] font-bold text-xl font-headline">DIPAD</span>
+</div>
+<p class="text-[#1b1c17]/80 dark:text-[#fafaf0]/80 font-['Inter'] text-sm leading-relaxed mb-6">
+                    Building a just and peaceful society where communities thrive through dignity, equity, and sustainable development.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#164212] cursor-pointer" data-icon="public">public</span>
+<span class="material-symbols-outlined text-[#164212] cursor-pointer" data-icon="mail">mail</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-16">
+<div>
+<h5 class="font-headline font-bold text-[#164212] mb-6">Explore</h5>
+<ul class="space-y-4">
+<li><a class="text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all font-['Inter'] text-sm" href="#">Impact Reports</a></li>
+<li><a class="text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all font-['Inter'] text-sm" href="#">Peace Resources</a></li>
+<li><a class="text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all font-['Inter'] text-sm" href="#">Current Programs</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold text-[#164212] mb-6">Connect</h5>
+<ul class="space-y-4">
+<li><a class="text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all font-['Inter'] text-sm" href="contact.html">Contact Us</a></li>
+<li><a class="text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all font-['Inter'] text-sm" href="privacy.html">Privacy Policy</a></li>
+<li><a class="text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all font-['Inter'] text-sm" href="terms.html">Terms</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-16 px-8 md:px-24 border-t border-[#c2c9bb]/30 pt-8 max-w-[1440px] mx-auto text-center md:text-left">
+<p class="text-[#1b1c17]/60 dark:text-[#fafaf0]/60 text-xs font-['Inter']">
+                © 2024 Daima Initiatives for Peace and Development (DIPAD). All rights reserved.
+            </p>
+</div>
+</footer>
+<div id="cookieBanner" class="cookie-banner">
+  <p class="text-sm">
+    We use cookies to improve your experience. By using our site, you agree to our <a href="privacy.html" class="underline">Privacy Policy</a>.
+  </p>
+
+  <div class="flex gap-3">
+    <button onclick="acceptCookies()" class="bg-green-600 px-4 py-2 rounded text-sm font-bold">
+      Accept
+    </button>
+  </div>
+</div>
+<script>
+function acceptCookies() {
+    localStorage.setItem("cookiesAccepted", "true");
+    document.getElementById("cookieBanner").classList.remove("show");
+}
+
+// Show the banner immediately on page load if not accepted
+window.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("cookieBanner");
+    if (!localStorage.getItem("cookiesAccepted")) {
+        banner.classList.add("show"); // triggers the slide-up animation
+    }
+});
+</script>
+</body></html>
+<!DOCTYPE html> 

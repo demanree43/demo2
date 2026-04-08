@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gallery | DIPAD Kenya</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-error-container": "#93000a",
+                "surface-tint": "#3c6934",
+                "error": "#ba1a1a",
+                "on-secondary-fixed-variant": "#663d15",
+                "secondary-container": "#ffc38f",
+                "tertiary-fixed-dim": "#bdcabe",
+                "surface-dim": "#dbdad1",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed-variant": "#3e4a41",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed-variant": "#24501e",
+                "on-primary-fixed": "#002201",
+                "surface-container-low": "#f5f4eb",
+                "secondary": "#81542a",
+                "on-secondary-fixed": "#2e1500",
+                "primary": "#164212",
+                "on-primary-container": "#9ed090",
+                "outline-variant": "#c2c9bb",
+                "tertiary-fixed": "#d9e6da",
+                "inverse-primary": "#a1d493",
+                "secondary-fixed-dim": "#f6bb87",
+                "on-surface": "#1b1c17",
+                "surface-container-high": "#e9e9df",
+                "on-tertiary-fixed": "#131e17",
+                "primary-fixed-dim": "#a1d493",
+                "surface-bright": "#fafaf0",
+                "on-primary": "#ffffff",
+                "inverse-on-surface": "#f2f1e8",
+                "secondary-fixed": "#ffdcc1",
+                "on-surface-variant": "#42493e",
+                "on-error": "#ffffff",
+                "error-container": "#ffdad6",
+                "outline": "#72796d",
+                "on-secondary-container": "#7a4e24",
+                "background": "#fafaf0",
+                "primary-container": "#2e5a27",
+                "surface-container-highest": "#e3e3da",
+                "surface-container": "#efeee5",
+                "tertiary": "#303c34",
+                "surface": "#fafaf0",
+                "primary-fixed": "#bdf0ad",
+                "on-tertiary-container": "#b9c6bb",
+                "on-secondary": "#ffffff",
+                "on-background": "#1b1c17",
+                "inverse-surface": "#30312b",
+                "tertiary-container": "#47534a",
+                "surface-variant": "#e3e3da"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .asymmetric-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+        }
+        @media (max-width: 768px) {
+            .asymmetric-layout { grid-template-columns: 1fr; }
+        }
+         .dark body {
+            background-color: #1b1c17;
+            color: #efeee5;
+        }
+        .dark header {
+            background-color: rgba(27, 28, 23, 0.8);
+        }
+        .dark .bg-surface { background-color: #1b1c17; }
+        .dark .bg-surface-container { background-color: #30312b; }
+        .dark .bg-surface-container-low { background-color: #2a2b24; }
+        .dark .bg-surface-container-highest { background-color: #42493e; }
+        .dark .bg-surface-dim { background-color: #131411; }
+        .dark .text-primary { color: #a1d493; }
+        .dark .text-secondary { color: #f6bb87; }
+        .dark .text-on-surface-variant { color: #c2c9bb; }
+        .dark .text-on-surface { color: #e3e3da; }
+        .dark .border-outline-variant\/20 { border-color: rgba(194, 201, 187, 0.2); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme immediately
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fafaf0]/80 dark:bg-[#1b1c17]/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center px-8 md:px-24 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#164212] dark:text-[#c2c9bb]" data-icon="park">park</span>
+<span class="text-[#164212] dark:text-[#fafaf0] font-extrabold tracking-tighter text-2xl font-headline">DIPAD</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="index.html">Home</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="program.html">Programs</a>
+<a class="text-[#164212] dark:text-[#fafaf0] border-b-2 border-[#164212] pb-1 font-headline tracking-tight font-bold text-lg transition-colors duration-300" href="gallery.html">Gallery</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="resources.html">Resources</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="About.html">About Us</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="Involed.html">Get Involved</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="contact.html">contact</a>
+<div class="flex items-center gap-4">
+<button aria-label="Toggle dark mode" class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-highest transition-colors duration-300 text-primary focus:outline-none" onclick="toggleTheme()">
+<span class="material-symbols-outlined block dark:hidden" data-icon="dark_mode">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block" data-icon="wb_sunny">wb_sunny</span>
+</button>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative px-8 pt-24 pb-16 max-w-7xl mx-auto overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8">
+<span class="inline-block px-4 py-1.5 mb-6 bg-tertiary-fixed text-on-tertiary-fixed-variant text-xs font-bold tracking-widest uppercase rounded-full">Visual Archives</span>
+<h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter text-primary leading-[0.9] mb-8">
+                        Moments of Peace, <br/>Acts of Stewardship
+                    </h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl font-medium leading-relaxed">
+                        A visual testament to the resilience of Kenyan communities. Through these lenses, we capture the quiet power of dialogue and the vibrant energy of collective progress.
+                    </p>
+</div>
+<div class="lg:col-span-4 flex justify-end">
+<div class="relative w-48 h-48 rounded-2xl bg-surface-container-highest overflow-hidden rotate-3 shadow-xl">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="close up of sunlit green leaves in a dense kenyan forest representing growth and nature stewardship" src="https://lh3.googleusercontent.com/aida-public/AB6AXuConkqhWdU4rjCktUA-PGOZzIU-_cT5FcUzZ-GO6eDdp6ZcZkaYzsIIQ4_M8wteV29C235iuloIHltcpaq27LUcMwDeFngRgYNl14zSmwj5clWgCdJl91phWmumkOAXp91YAauETUKIHChwT1aU2TpmYkXtW-1i-0HTH4Vs7YPHgIgWc-V9gRhldqbnjbGUwAHRNQSPdyFoJhvmOyeG5hAU2b5BU4ni1rOJApmpH-hu317pgXuaKTDqmSNUHQ3_fpYJoDENNpRjclW4"/>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Image Grid -->
+<section class="px-8 max-w-7xl mx-auto mb-24">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+
+  <!-- Prev Button -->
+<button id="prevBtn" 
+  class="absolute left-4 top-1/2 -translate-y-1/2 z-50
+  bg-black/60 hover:bg-black/80
+  p-3 rounded-full shadow-lg backdrop-blur-sm transition">
+
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       class="w-6 h-6 text-white" 
+       fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M15 19l-7-7 7-7" />
+  </svg>
+</button>
+<!-- Image -->
+  <img id="lightbox-img" class="max-w-[90%] max-h-[90%]" />
+
+<!-- Next Button -->
+<button id="nextBtn" 
+  class="absolute right-4 top-1/2 -translate-y-1/2 z-50
+  bg-black/60 hover:bg-black/80
+  p-3 rounded-full shadow-lg backdrop-blur-sm transition">
+
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       class="w-6 h-6 text-white" 
+       fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M9 5l7 7-7 7" />
+  </svg>
+</button>
+
+</div>
+<!-- Gallery Item 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="diverse group of community leaders sitting in a circle during a peace workshop in a sunlit room in nakuru" src="Gallery/DSC_2650.JPG"/>
+
+</div>
+</div>
+
+<!-- Gallery Item 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="group of smiling children and community members planting trees together in a dusty but vibrant kenyan landscape" src="Gallery/DSC_2657.JPG"/>
+</div>
+</div>
+
+<!-- Gallery Item 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="close up of two hands shaking firmly with a blurred background of a busy marketplace in nairobi" src="Gallery/IMG_1016.JPG"/>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="young woman speaking passionately at a podium with a DIPAD logo in the background during a youth leadership summit" src="Gallery/IMG_1017.JPG"/>
+</div>
+</div>
+<!-- Gallery Item 5 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="group of students in a circle laughing and sharing notes during an educational program outdoors" src="Gallery/IMG_1019.JPG"/>
+</div>
+</div>
+<!-- Gallery Item 6 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="elderly community members sharing a meal under a large acacia tree at sunset representing peaceful coexistence" src="Gallery/IMG_1020.JPG"/>
+</div>
+</div>
+<!-- Gallery Item 7 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="group of students in a circle laughing and sharing notes during an educational program outdoors" src="Gallery/IMG_1022.JPG"/>
+</div>
+</div>
+<!-- Gallery Item 8 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="group of students in a circle laughing and sharing notes during an educational program outdoors" src="Gallery/IMG_1023.JPG"/>
+</div>
+</div>
+<!-- Gallery Item 9 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="group of students in a circle laughing and sharing notes during an educational program outdoors" src="Gallery/IMG_1024.JPG"/>
+</div>
+</div>
+<!-- Gallery Item 10 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container mb-4 relative">
+<img class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-transform duration-500" data-alt="group of students in a circle laughing and sharing notes during an educational program outdoors" src="Gallery/IMG_1025.JPG"/>
+</div>
+</div>
+</section>
+<!-- Storytelling Card -->
+<section class="px-8 max-w-7xl mx-auto mb-24">
+<div class="relative rounded-3xl overflow-hidden bg-primary p-12 lg:p-24 min-h-[500px] flex items-center">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-40" data-alt="wide shot of a golden sunset over a kenyan savanna with distant figures walking together in unity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNu2Uh6QYgSS5XR8hUaZ7epIctTotO5YOJ4zGyOOaltUUfYl8TMBPHCBBGmA6u7wAGGCi2iESr5de_JVJU8UvhQ5kCpU4cddTI-UAyaK0dYPmJYAHXzIjxpkAUuwjpOCXz1fjwQjWhorhYsTLiKhatp52v3JrgS32fhmOeCdKsHlwd3Vtp4fNs5aBLO7XTIeSM3bvV914XtFcWPaQSCOPJvkhKIKnGpcblkRx-Kb-GMQP2ZqvrSELCfRXRxol5PiYdDZzR7ZiVV4zB"/>
+</div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="text-4xl md:text-5xl font-extrabold text-on-primary tracking-tighter mb-6 leading-tight">Every peacebuilder has a journey. Share yours.</h2>
+<p class="text-on-primary/80 text-lg mb-10 leading-relaxed font-medium">
+                        Our impact is the sum of thousands of individual stories. Whether you've attended a workshop or led a community project, your experience can inspire the next generation of stewards.
+                    </p>
+<button class="group flex items-center gap-3 bg-on-primary text-primary px-8 py-4 rounded-xl font-bold hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all">
+                        Tell Your Story
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim pt-16 pb-8 border-t border-outline-variant/20">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-headline font-black text-primary text-3xl mb-6">DIPAD</h2>
+<p class="text-secondary font-body max-w-sm leading-relaxed mb-8">
+                    Daima Initiatives for Peace and Development. Dedicated to a Kenya rooted in social justice, peace, and environmental stewardship.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity" data-icon="public">public</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity" data-icon="mail">mail</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity" data-icon="share">share</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<h4 class="font-headline font-bold text-primary mb-4">Ecosystem</h4>
+<ul class="space-y-3 font-body text-sm text-secondary opacity-80">
+<li><a class="hover:text-primary transition-colors" href="#">Impact Reports</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Gallery</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Community Hub</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Peace Networks</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-primary mb-4">Governance</h4>
+<ul class="space-y-3 font-body text-sm text-secondary opacity-80">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Annual Review</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Partner With Us</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body text-sm text-secondary opacity-60">© 2024 DIPAD Kenya. Peace, Justice, and Stewardship.</p>
+<div class="flex gap-6 font-body text-sm text-secondary opacity-60">
+<a class="hover:text-primary" href="#">Facebook</a>
+<a class="hover:text-primary" href="#">LinkedIn</a>
+<a class="hover:text-primary" href="#">Instagram</a>
+</div>
+</div>
+</footer>
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const images = document.querySelectorAll("section img");
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      showImage(index);
+    });
+  });
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }
+
+  // Close on background click
+ lightbox.addEventListener("click", (e) => {
+  if (e.target.id === "lightbox")  {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+    }
+  });
+
+  // Keyboard support
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.classList.contains("hidden")) return;
+
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+    if (e.key === "Escape") lightbox.classList.add("hidden");
+  });
+
+  // Attach to buttons
+  document.getElementById("nextBtn").onclick = nextImage;
+  document.getElementById("prevBtn").onclick = prevImage;
+</script>
+</body></html>
+

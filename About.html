@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | DIPAD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e3e3da",
+              "on-secondary-fixed-variant": "#663d15",
+              "on-surface-variant": "#42493e",
+              "outline": "#72796d",
+              "on-tertiary-container": "#b9c6bb",
+              "surface-variant": "#e3e3da",
+              "tertiary-fixed": "#d9e6da",
+              "on-primary-fixed": "#002201",
+              "on-background": "#1b1c17",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#f6bb87",
+              "on-tertiary-fixed-variant": "#3e4a41",
+              "primary-fixed-dim": "#a1d493",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#a1d493",
+              "primary-container": "#2e5a27",
+              "secondary": "#81542a",
+              "outline-variant": "#c2c9bb",
+              "on-secondary-fixed": "#2e1500",
+              "on-tertiary-fixed": "#131e17",
+              "on-primary-fixed-variant": "#24501e",
+              "tertiary-container": "#47534a",
+              "primary": "#164212",
+              "tertiary-fixed-dim": "#bdcabe",
+              "inverse-surface": "#30312b",
+              "surface-tint": "#3c6934",
+              "secondary-fixed": "#ffdcc1",
+              "on-primary-container": "#9ed090",
+              "surface-container-lowest": "#ffffff",
+              "error": "#ba1a1a",
+              "tertiary": "#303c34",
+              "inverse-on-surface": "#f2f1e8",
+              "surface": "#fafaf0",
+              "surface-container-high": "#e9e9df",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dbdad1",
+              "on-secondary-container": "#7a4e24",
+              "surface-container": "#efeee5",
+              "on-surface": "#1b1c17",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#fafaf0",
+              "secondary-container": "#ffc38f",
+              "surface-container-low": "#f5f4eb",
+              "primary-fixed": "#bdf0ad",
+              "background": "#fafaf0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .editorial-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1.5rem;
+      }
+    </style>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .asymmetric-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+        }
+        @media (max-width: 768px) {
+            .asymmetric-layout { grid-template-columns: 1fr; }
+        }
+         .dark body {
+            background-color: #1b1c17;
+            color: #efeee5;
+        }
+        .dark header {
+            background-color: rgba(27, 28, 23, 0.8);
+        }
+        .dark .bg-surface { background-color: #1b1c17; }
+        .dark .bg-surface-container { background-color: #30312b; }
+        .dark .bg-surface-container-low { background-color: #2a2b24; }
+        .dark .bg-surface-container-highest { background-color: #42493e; }
+        .dark .bg-surface-dim { background-color: #131411; }
+        .dark .text-primary { color: #a1d493; }
+        .dark .text-secondary { color: #f6bb87; }
+        .dark .text-on-surface-variant { color: #c2c9bb; }
+        .dark .text-on-surface { color: #e3e3da; }
+        .dark .border-outline-variant\/20 { border-color: rgba(194, 201, 187, 0.2); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme immediately
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fafaf0]/80 dark:bg-[#1b1c17]/80 backdrop-blur-xl">
+<nav class="flex justify-between items-center px-8 md:px-24 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="park">park</span>
+<span class="text-[#164212] dark:text-[#fafaf0] font-extrabold tracking-tighter text-2xl font-headline">DIPAD</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 font-headline tracking-tight font-bold text-lg hover:text-[#164212] transition-colors duration-300" href="index.html">Home</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 font-headline tracking-tight font-bold text-lg hover:text-[#164212] transition-colors duration-300" href="program.html">Programs</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="gallery.html">Gallery</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="resources.html">Resources</a>
+<a class="text-[#164212] dark:text-[#fafaf0] border-b-2 border-[#164212] pb-1 font-headline tracking-tight font-bold text-lg transition-colors duration-300" href="About.html">About Us</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 font-headline tracking-tight font-bold text-lg hover:text-[#164212] transition-colors duration-300" href="Involed.html">Get Involved</a>
+<a class="text-[#1b1c17]/70 dark:text-[#fafaf0]/70 hover:text-[#164212] transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="contact.html">contact</a>
+<div class="flex items-center gap-4">
+<button aria-label="Toggle dark mode" class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-highest transition-colors duration-300 text-primary focus:outline-none" onclick="toggleTheme()">
+<span class="material-symbols-outlined block dark:hidden" data-icon="dark_mode">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block" data-icon="wb_sunny">wb_sunny</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section: Editorial Intro -->
+<section class="px-8 md:px-24 py-16 md:py-24 max-w-[1440px] mx-auto">
+<div class="editorial-grid">
+<div class="col-span-12 md:col-span-7 mb-12">
+<span class="text-secondary font-headline font-bold tracking-widest text-sm uppercase mb-6 block">OUR STORY</span>
+<h1 class="text-on-surface font-headline font-extrabold text-5xl md:text-7xl tracking-tighter leading-tight mb-8">
+                        Nurturing the seeds of <span class="text-primary italic">peace</span> and development.
+                    </h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-2xl leading-relaxed">
+                        Daima Initiatives for Peace and Development (DIPAD) is a community-driven catalyst committed to fostering sustainable justice and inclusive growth across Kenya.
+                    </p>
+</div>
+<div class="col-span-12 md:col-span-5 relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high relative z-10">
+<img alt="Community meeting under a large tree" class="w-full h-full object-cover" data-alt="Kenyan community meeting gathering under large acacia tree" src="Pics/seeds.jpg"/>
+</div>
+<div class="absolute -bottom-8 -left-8 w-48 h-48 bg-surface-container-highest rounded-xl -z-0"></div>
+</div>
+</div>
+</section>
+<!-- Mission & Values: Tonal Grid -->
+<section class="bg-surface-container-low py-24 px-8 md:px-24">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-primary mb-8">Our Mission</h2>
+<div class="p-8 bg-surface rounded-xl shadow-sm border-l-4 border-secondary">
+<p class="text-on-surface text-2xl font-headline font-semibold leading-snug italic">
+                                "To empower communities through sustainable peace-building initiatives and socio-economic programs that foster long-term stability and dignity."
+                            </p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-8">
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="volunteer_activism">volunteer_activism</span>
+<div>
+<h3 class="font-headline font-bold text-xl mb-2">Social Justice</h3>
+<p class="text-on-surface-variant leading-relaxed">Advocating for the rights and voices of the underserved to ensure equity across all community sectors.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="handshake">handshake</span>
+<div>
+<h3 class="font-headline font-bold text-xl mb-2">Integrity &amp; Trust</h3>
+<p class="text-on-surface-variant leading-relaxed">Building lasting relationships through transparency and unwavering commitment to our communities.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="eco">eco</span>
+<div>
+<h3 class="font-headline font-bold text-xl mb-2">Sustainable Growth</h3>
+<p class="text-on-surface-variant leading-relaxed">Focusing on long-term solutions that provide tools for independence rather than temporary relief.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- History: The Asymmetric Timeline -->
+<section class="px-8 md:px-24 py-32 max-w-[1440px] mx-auto overflow-hidden">
+<div class="relative">
+<div class="absolute top-0 left-0 md:left-1/2 w-px h-full bg-outline-variant opacity-30 -translate-x-1/2"></div>
+<div class="mb-24 text-center">
+<h2 class="font-headline text-5xl font-extrabold tracking-tighter">Our Journey</h2>
+</div>
+<!-- Event 1 -->
+<div class="relative editorial-grid mb-32 items-center">
+<div class="col-span-12 md:col-span-5 md:text-right">
+<span class="text-secondary font-headline font-bold text-3xl mb-4 block">2011</span>
+<h3 class="text-2xl font-headline font-bold mb-4">Founding in Nairobi</h3>
+<p class="text-on-surface-variant leading-relaxed">DIPAD was born out of a grassroots movement to address urban inequality and provide peace-building workshops during critical election periods.</p>
+</div>
+<div class="hidden md:flex col-span-2 justify-center z-10">
+<div class="w-4 h-4 rounded-full bg-primary border-4 border-surface"></div>
+</div>
+<div class="col-span-12 md:col-span-5">
+<div class="rounded-xl overflow-hidden aspect-video bg-surface-container">
+<img alt="Early meeting" class="w-full h-full object-cover" data-alt="Historic photo of first DIPAD community workshop in 2012" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkOpF-5ZtKdQNODwqdh83sODQaTuwJRMZhX4L5vLxaWRHCWUdar1GeyMUamZUbzY1_dMDraV_-sM94Z-_EPkly_BreXjoysSOh0Uho65slUnhALeusbfAi5E8AcvVv6Ruq060AuCLD8X0HdKaP6smVmEKNgtRWN73p05YTdiyIn3uJ61XWcdM0IOH6fgLsizkW_9OxjPvpleauOrdyWQRp4fIpDN8Z-vsSq2G4zy2Lr8X9bChJadg2YfiF3LHQZXUESggRQkcnWKY3"/>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative editorial-grid mb-32 items-center">
+<div class="col-span-12 md:col-span-5 order-2 md:order-1">
+<div class="rounded-xl overflow-hidden aspect-video bg-surface-container">
+<img alt="Growth" class="w-full h-full object-cover" data-alt="DIPAD staff expanding programs into rural areas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYGToOYquf6TGrsqrGyUm-RGv11nBf0EeNBw29EY-TlBURg9Y3EVt2naB8TPbgq3v1vuu9cbvzuNU4JjGBM0Ac4pRmfXQ_cVXnzNWbzdhcXg7-BtMhDNHhlb2En0pSQ4HKjiiQnPYC_uafhwrjj-Q5toEfdkZWvMuPjyY8P_aPQH5ZClcBFm7jNDaybGZmxgDe9VTgqQ4cZ7QiZS826Lis7D0nm4fsbBzndqH1QXiOIppKOOFr5SgeBObL2v2-6TDqWhGYFgzaBygv"/>
+</div>
+</div>
+<div class="hidden md:flex col-span-2 justify-center z-10 order-2">
+<div class="w-4 h-4 rounded-full bg-primary border-4 border-surface"></div>
+</div>
+<div class="col-span-12 md:col-span-5 order-1 md:order-3">
+<span class="text-secondary font-headline font-bold text-3xl mb-4 block">2017</span>
+<h3 class="text-2xl font-headline font-bold mb-4">Expanding Horizons</h3>
+<p class="text-on-surface-variant leading-relaxed">Recognizing the interconnectedness of peace and prosperity, we expanded into agricultural development and youth vocational training across the Rift Valley.</p>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative editorial-grid items-center">
+<div class="col-span-12 md:col-span-5 md:text-right">
+<span class="text-secondary font-headline font-bold text-3xl mb-4 block">Today</span>
+<h3 class="text-2xl font-headline font-bold mb-4">A National Catalyst</h3>
+<p class="text-on-surface-variant leading-relaxed">With over 15 regional offices, DIPAD now serves as a key consultant for sustainable development and social justice policies across the East African region.</p>
+</div>
+<div class="hidden md:flex col-span-2 justify-center z-10">
+<div class="w-4 h-4 rounded-full bg-primary border-4 border-surface"></div>
+</div>
+<div class="col-span-12 md:col-span-5">
+<div class="rounded-xl overflow-hidden aspect-video bg-surface-container">
+<img alt="Present day" class="w-full h-full object-cover" data-alt="Modern DIPAD office building in Nairobi with solar panels" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5pAfC7AkXCWjJRcqjzKlyfiN53Sf7zy83oVWfYmoDq58CmUsCa5lZf5ESk8ZDPviNbBvrhzrO8YBOEy7w6yIAn-Pr10nRhqrxLXydHmHOFfkF_JMMriMjv20XZh8d-MsblgoCta2YMbjeRDpQIm6L69zwJdyz2if5el9A72zmrBrxstch_glPCtqYXneLifC2axQC3Dc7MFVZrZXHuH9DzF8YZAP9NvWDoPtwC7-8jeofttJF_ezS21LdbYhgB_5fzmnr21Lb6bca"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Team: Bento Style Leadership -->
+<section class="bg-surface-container py-24 px-8 md:px-24">
+<div class="max-w-[1440px] mx-auto">
+<div class="mb-16">
+<h2 class="font-headline text-4xl font-extrabold tracking-tight mb-4">The People Behind the Promise</h2>
+<p class="text-on-surface-variant max-w-xl">Meet the visionary leaders and dedicated staff who drive our mission forward every single day.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Director -->
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-xl bg-surface p-8 shadow-sm">
+<div class="flex flex-col h-full justify-between">
+<div>
+<h3 class="font-headline font-bold text-2xl mb-1">Dr........</h3>
+<p class="text-secondary font-medium mb-4">Executive Director</p>
+<p class="text-on-surface-variant max-w-xs mb-8">With over 20 years in community development, Amina guides our strategic vision with empathy and rigor.</p>
+</div>
+<div class="w-full aspect-square md:aspect-auto md:h-64 rounded-xl overflow-hidden">
+<img alt="Executive Director" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Professional portrait of Dr. Amina Mohamed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE6W1moacVb__WCHnP_w6z-jtiAuuqkRDk-ZKX2o_RxFZ3tF2IlJv57Qb8DUenCkYCa6WhUml0e-IuF4v419lO96q6daNTrv0uKP65tXrb3rEzz-5h0WIJZtJEotShmqEHjJZ_JyQirIDQU7WmorE-xt8wQ4JyJsKylfNEZAbAMtKVZBbUs0p3vYRNUQ675Rv7Wo2Hvhj1S7LGWiGi-qEiTi30C1dTKMdYxzZC2g4eXoxUkYtwgPnPdvyAZdXiiYY8tuSt43lrQYMB"/>
+</div>
+</div>
+</div>
+<!-- Member 1 -->
+<div class="bg-surface p-6 rounded-xl shadow-sm">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-4">
+<img alt="Staff member" class="w-full h-full object-cover grayscale" data-alt="Portrait of Samuel Kipchoge, Programs Manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpEmowUpI8n7dsHBtte3NkJPlvRXVmUiUcPVBzVMc1ieZeHtQxfIQJP7qeEwjnVFHX0ta7EKK3UHNim_Nn0N7DXZSSVqFcuapNf9O2uDs-GlA2FqaeCiA7WeADddLztrDMyNhk5BYpYEBbPz5_nqTgg2Tl9M0DGu0gkvUG1iFHOVoQsLTNNUcQuX-otAoH48bJi6Hdo7gGF_yuAeZPZjp2SE6iqIXQW46YKaBe8RaPlxA_O4aD1vh3lVHLjBw_wHeGB7LoH2heyBla"/>
+</div>
+<h4 class="font-bold font-headline">Vincent</h4>
+<p class="text-sm text-on-surface-variant">Programs Manager</p>
+</div>
+<!-- Member 2 -->
+<div class="bg-surface p-6 rounded-xl shadow-sm">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-4">
+<img alt="Staff member" class="w-full h-full object-cover grayscale" data-alt="Portrait of Sarah Wanjiku, Head of Peacebuilding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpEmowUpI8n7dsHBtte3NkJPlvRXVmUiUcPVBzVMc1ieZeHtQxfIQJP7qeEwjnVFHX0ta7EKK3UHNim_Nn0N7DXZSSVqFcuapNf9O2uDs-GlA2FqaeCiA7WeADddLztrDMyNhk5BYpYEBbPz5_nqTgg2Tl9M0DGu0gkvUG1iFHOVoQsLTNNUcQuX-otAoH48bJi6Hdo7gGF_yuAeZPZjp2SE6iqIXQW46YKaBe8RaPlxA_O4aD1vh3lVHLjBw_wHeGB7LoH2heyBla"/>
+</div>
+<h4 class="font-bold font-headline">Ronald</h4>
+<p class="text-sm text-on-surface-variant">Head of Peacebuilding</p>
+</div>
+<!-- Member 3 -->
+<div class="bg-surface p-6 rounded-xl shadow-sm">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-4">
+<img alt="Staff member" class="w-full h-full object-cover grayscale" data-alt="Portrait of Faith Mwemba, Community Liaison" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGIbt6MS0e5CXpi2Hf7RJu6wQzlbjuo3H22Pae38A7qFB-bwpHXTIHD77eu1F7kavWh39wV12Y-jrJMPfDFy6vWvUFjJpHLBTZpdAg-ef1Y5ewOa4D17ZyAV7wq0Xw4DqID_J8drF8wvj_mPkVXQ0RE_K1gAeQ_Fd5ODIWIk4Lp9AxeUmkE8C1TqjVkMZBHZ0NHJqEV7qRMaHNdTPorekccxpO3mFJS4TtSmx2AQ3XcWgPBGdX2WobMfLjxKkRdquuRc8Nd_iAVQBp"/>
+</div>
+<h4 class="font-bold font-headline">Naomi</h4>
+<p class="text-sm text-on-surface-variant">Community Liaison</p>
+</div>
+<!-- Member 4 -->
+<div class="bg-surface p-6 rounded-xl shadow-sm">
+<div class="w-full aspect-square rounded-lg overflow-hidden mb-4">
+<img alt="Staff member" class="w-full h-full object-cover grayscale" data-alt="Portrait of David Otieno, Finance &amp; Ops" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHUvOBrR7H7EOGgWFT2NjxsHbPyisnS0ddsQ3GL9m0JktQC2ciFpzBNjMQummFfDWeCSzSkS6jYn65BSEE5LR_DjfXRnNEXpb_LR_JNiYXVS3wNFb6vp_w58mqf9FNHs0p5Xdk7juXXPeYmvWYBOCa5PMDFlme1-MRAenuEKKjK55cVjnoJ2nLh5dgzgr6ZhZvuPtVZ-2HQUYC0zYE-U26xTgGR0R9fm4IGNAVuUkuWKMKwGSjvFFL2OvpORZGraIHVpgrcc5rk34g"/>
+</div>
+<h4 class="font-bold font-headline">Nancy </h4>
+<p class="text-sm text-on-surface-variant">Finance &amp; Ops</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-8 md:px-24 py-32 text-center max-w-[1440px] mx-auto">
+<div class="bg-primary p-12 md:p-24 rounded-3xl relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-on-primary font-headline text-4xl md:text-6xl font-extrabold tracking-tighter mb-8">Ready to make an impact?</h2>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<button class="bg-secondary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all">Support Our Work</button>
+<button class="bg-on-primary text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container transition-all">Join the Team</button>
+</div>
+</div>
+<!-- Abstract Grain Pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#efeee5] dark:bg-[#1b1c17] text-[#164212] dark:text-[#c2c9bb] w-full pt-16 pb-8">
+<div class="flex flex-col md:flex-row justify-between items-start px-8 md:px-24 gap-12 max-w-[1440px] mx-auto">
+<div class="flex flex-col gap-6 max-w-sm">
+<div class="text-[#164212] font-bold text-xl font-headline">DIPAD</div>
+<p class="font-['Inter'] text-sm leading-relaxed text-[#1b1c17]/80 dark:text-[#fafaf0]/80">
+                    Dedicated to community resilience and sustainable peace building through intentional innovation and local leadership.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-2xl">public</span>
+<span class="material-symbols-outlined text-2xl">mail</span>
+<span class="material-symbols-outlined text-2xl">share</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-2 gap-16">
+<div class="flex flex-col gap-4">
+<h5 class="font-headline font-bold uppercase tracking-widest text-xs">Resources</h5>
+<a class="font-['Inter'] text-sm leading-relaxed text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all" href="resources.html">Impact Reports</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all" href="resources.html">Peace Resources</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-headline font-bold uppercase tracking-widest text-xs">Company</h5>
+<a class="font-['Inter'] text-sm leading-relaxed text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all" href="contact.html">Contact Us</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-[#1b1c17]/80 dark:text-[#fafaf0]/80 hover:text-[#164212] underline decoration-2 transition-all" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+<div class="px-8 md:px-24 mt-16 pt-8 border-t border-outline-variant/30 text-center max-w-[1440px] mx-auto">
+<p class="font-['Inter'] text-sm leading-relaxed text-[#1b1c17]/60 dark:text-[#fafaf0]/60">
+                © 2024 Daima Initiatives for Peace and Development (DIPAD). All rights reserved.
+            </p>
+</div>
+</footer>
+</body></html>
